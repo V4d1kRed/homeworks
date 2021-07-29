@@ -38,3 +38,42 @@ const getNumberOfPacks = (sheetsInReamPaper, consumptionPerWeek, weeksAmount) =>
 }
 
 console.log(getNumberOfPacks(sheetsInReamPaper, consumptionPerWeek, weeksAmount));
+// Task 4
+const floors = 9;
+const roomsOnFloor = 3;
+const roomNumber = 456;
+
+const getPorchNumber = (floors, roomsOnFloor, roomNumber) => {
+    const numberOfApartmentsInThePorch = floors * roomsOnFloor;
+    const porchNumber = (roomNumber - 1) / numberOfApartmentsInThePorch + 1;
+    return porchNumber;
+}
+
+const getFloorNumber = (floors, roomsOnFloor, roomNumber) => {
+    const numberOfApartmentsInThePorch = floors * roomsOnFloor;
+    const floorNumber = (roomNumber - 1) % numberOfApartmentsInThePorch / roomsOnFloor + 1;
+    return floorNumber;
+}
+
+console.log(getPorchNumber(floors, roomsOnFloor, roomNumber));
+console.log(getFloorNumber(floors, roomsOnFloor, roomNumber));
+// Task 5
+let string = "";
+const line = "-";
+const lattice = "#";
+const medianNumber = 8;
+
+for (let i = 0; i < medianNumber; i++) {
+    for (let j = 1; j < medianNumber - i; j++) {
+        string += line;
+    }
+    for (let j = medianNumber - 2 * i; j <= medianNumber; j++) {
+        string += lattice;
+    }
+    for (let j = 1; j < medianNumber - i; j++) {
+        string += line;
+    }
+    string += "\n";
+}
+
+console.log(string);
