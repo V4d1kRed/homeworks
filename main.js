@@ -55,3 +55,19 @@ const getNameOfDay = (lang, day) => {
 }
 
 console.log(getNameOfDay(lang, day));
+// Task 4
+const arrayNumbers = [19, 5, 42, 2, 77];
+
+const getSumOfNumbers = arrayNumbers => {
+    const resultArray = [];
+    
+    arrayNumbers.forEach(item => {
+        if (typeof(item) === 'number' && item > 0 && item % 1 === 0) {
+            resultArray.push(item);
+        }
+    });
+
+    return resultArray.sort((a, b) => a - b).slice(0, 2).reduce((a, b) => a + b);
+}
+
+console.log(getSumOfNumbers(arrayNumbers));
