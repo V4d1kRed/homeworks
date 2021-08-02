@@ -71,3 +71,13 @@ const getSumOfNumbers = arrayNumbers => {
 }
 
 console.log(getSumOfNumbers(arrayNumbers));
+// Task 5
+const binaryNumber = [1, 0, 1, 0, 1];
+
+const getNumberInDecimalSystem = arrayNumbers => {
+    const binaryString = arrayNumbers.join('');
+    
+    return parseInt(binaryString, 2);
+}
+
+console.log(getNumberInDecimalSystem(binaryNumber));
