@@ -6,7 +6,7 @@ class Student {
         this.surname = enrollee.surname;
         this.ratingPoint = enrollee.ratingPoint;
         this.schoolPoint = enrollee.schoolPoint;
-        this.isSelfPayment = Student.getPayment(Student.listOfStudents, this, this.ratingPoint);
+        this.isSelfPayment = Student.getPayment(this);
     }
 
     static id = 1;
@@ -26,18 +26,21 @@ class Student {
         });
     }
     
-    static getPayment(arr, student, ratingPoint) {   
-        arr.push(student);
-        arr = this.sortStudents(arr);
-        
-        if (ratingPoint >= 800) {
-            return true;
+    static getPayment(student) {
+        this.listOfStudents.push(student);
+        this.sortStudents(this.listOfStudents);
+
+        for (let i = 0; i < this.listOfStudents.length; i++) {
+            if (i <= 4 && this.listOfStudents[i].ratingPoint >= 800) {
+                this.listOfStudents[i].isSelfPayment = true;
+            } else {
+                this.listOfStudents[i].isSelfPayment = false;
+            }
         }
-        
-        return false;
+
+        return true;
     }
-
-
+    
     get listOfStudents() {
         return this.listOfStudents;
     }
