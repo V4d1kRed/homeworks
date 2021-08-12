@@ -103,3 +103,19 @@ const myString = new CustomString();
 console.log(myString.reverse('qwerty'));
 console.log(myString.ucFirst('qwerty'));
 console.log(myString.ucWords('qwerty qwerty qwerty'));
+// Task 3
+class Validator {
+    checkIsEmail(string) {
+        const checkIsEmail = string.match(/^[^\s][A-z0-9.]+@[a-z0-9.]+\.[a-z]{2,8}$/g);
+
+        if (checkIsEmail !== null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+const validator = new Validator();
+
+console.log(validator.checkIsEmail('vasya.pupkin@gmail.com'));
