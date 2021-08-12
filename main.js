@@ -10,6 +10,7 @@ class Student {
     }
 
     static id = 1;
+    static listOfStudents = [];
 
     static getId() {
         return this.id++;
@@ -24,8 +25,6 @@ class Student {
             }
         });
     }
-
-    static listOfStudents = [];
     
     static getPayment(arr, student, ratingPoint) {   
         arr.push(student);
@@ -47,3 +46,57 @@ class Student {
 studentArr.forEach(item => new Student(item));
 
 console.log(Student.listOfStudents);
+// Task 2
+class CustomString {
+    reverse(string) {
+        if (typeof(string) === 'string') {
+            let result = '';
+
+            for (let i = string.length - 1; i >= 0; i--) {
+                result += string[i];
+            }
+
+            return result;
+        }
+        
+        console.error('Enter the string!');
+    }
+
+    ucFirst(string) {
+        if (typeof(string) === 'string') {
+            let result = '';
+            let firstLetter = string.substr(0, 1).toUpperCase();
+            let rightPart = string.substr(1);
+
+            result += firstLetter + rightPart + ' ';
+
+            return result;
+        }
+        
+        console.error('Enter the string!');
+    }
+
+    ucWords(string) {
+        if (typeof(string) === 'string') {
+            let result = '';
+            let stringArr = string.split(' ');
+            
+            for (let i = 0; i < stringArr.length; i++) {
+                let item = stringArr[i];
+                let firstLetter = item.substr(0, 1).toUpperCase();
+                let rightPart = item.substr(1);
+                result += firstLetter + rightPart + ' ';
+            }
+
+            return result;
+        }
+        
+        console.error('Enter the string!');
+    }
+}
+
+const myString = new CustomString();
+
+console.log(myString.reverse('qwerty'));
+console.log(myString.ucFirst('qwerty'));
+console.log(myString.ucWords('qwerty qwerty qwerty'));
