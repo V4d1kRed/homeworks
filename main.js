@@ -1,5 +1,5 @@
 // Task 1
-const arr = ['Vasya', 'Petya', 'Alexey'];
+const arrNames = ['Vasya', 'Petya', 'Alexey'];
 
 const removeUser = (arr, index) => {
     if (index < 0 || index >= arr.length) {
@@ -15,7 +15,7 @@ const removeUser = (arr, index) => {
     return arr;
 };
 
-console.log(removeUser(arr, 1));
+console.log(removeUser(arrNames, 1));
 // Task 2
 const obj = { 
     name: 'Vasya', 
@@ -40,17 +40,33 @@ const secondObj = {
     name: 'Katya'
 };
 
-const arr = [
+const arrСandidates = [
     {
         id: 1,
-        name: 'Kolya'
+        name: 'Kolya',
     },
     {
         id: 2,
-        name: 'Petya'
+        name: 'Petya',
     },
 ];
 
-const insertIntoarr = (obj, id) {
-    
+const insertIntoarr = (obj, candidateId) => {
+    const candidatesId = arrСandidates.map(item => item.id);
+
+    if (candidatesId.includes(candidateId)) {
+        for (let  i = 0; i < arrСandidates.length; i++) {
+            if (arrСandidates[i].id === candidateId) {
+                arrСandidates.splice(i, 0, obj);
+                break;
+            }
+        }
+    } else {
+        console.error(`Candidate with id(${candidateId}) not found in array!`);
+    }
 };
+
+insertIntoarr(firstObj, 1);
+insertIntoarr(secondObj, 2);
+
+console.log(arrСandidates);
