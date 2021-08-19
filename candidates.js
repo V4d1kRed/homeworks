@@ -1,5 +1,4 @@
-
-const condidateArr = [
+const candidatesArr = [
     {
         "_id": "5e216bc9a6059760578aefa4",
         "index": 0,
@@ -4747,6 +4746,6 @@ const condidateArr = [
     }
 ];
 
-condidateArr.forEach(item => {
+candidatesArr.forEach(item => {
     item.registered = item.registered.split(' ')[0];
 })
