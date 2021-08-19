@@ -110,4 +110,32 @@ const getUsersByYear = (year) => {
     return result ;
 };
 
-console.log(getUsersByYear(2020));
+console.log(getUsersByYear(2016));
+// Task 8
+const getCandidatesByUnreadMsg = (amount) => {
+    const result = [];
+
+    for (let i = 0; i < candidatesArr.length; i++) {
+        if (+candidatesArr[i].greeting.match(/\d+/) === amount) {
+            result.push(candidatesArr[i]);
+        }
+    }
+
+    return result;
+};
+
+console.log(getCandidatesByUnreadMsg(10));
+// Task 9
+const getCandidatesByGender = (gender) => {
+    const result = [];
+
+    for (let i = 0; i < candidatesArr.length; i++) {
+        if (candidatesArr[i].gender === gender) {
+            result.push(candidatesArr[i]);
+        }
+    }
+
+    return result;
+};
+
+console.log(getCandidatesByGender('male'));
