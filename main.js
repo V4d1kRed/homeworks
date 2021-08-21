@@ -54,3 +54,28 @@ const getCandidateById = (id) => {
 };
 
 console.log(getCandidateById('5e216bc920fd0d22773e4bce'));
+// Task 3
+const sortCandidatesArr = (sortBy) => {
+    const getBalanceFromString = (string) => {
+        const regexp = /\d+\,\d+\.\d+/gi;
+        const balance = +string.match(regexp)[0].replace(',', '');
+
+        return balance;
+    };
+
+    if (sortBy === 'asc') {
+        return [...candidateArr].sort((a, b) => {
+            return getBalanceFromString(a.balance) - getBalanceFromString(b.balance);
+        });
+    } else if (sortBy === 'desc') {
+        return [...candidateArr].sort((a, b) => {
+            return getBalanceFromString(b.balance) - getBalanceFromString(a.balance);
+        });
+    } else {
+        return candidateArr;
+    }
+};
+
+console.log(sortCandidatesArr('asc'));
+console.log(sortCandidatesArr('desc'));
+console.log(sortCandidatesArr());
