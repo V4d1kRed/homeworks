@@ -29,14 +29,13 @@ const getCandidateById = (id) => {
     }
 
     const getDateFromString = (string) => {
-        let result = '';
         const regex = /19|20\d{2}-[0-1]\d-[0-3]\d/gi;
         const date = string.match(regex)[0].split('-').reverse();
         const day = date[0];
         const month = date[1];
         const year = date[2];
 
-        result = `${day}/${month}/${year}`;
+        const result = `${day}/${month}/${year}`;
 
         return result.length > 0 ? result : null;
     };
@@ -57,10 +56,8 @@ console.log(getCandidateById('5e216bc920fd0d22773e4bce'));
 // Task 3
 const sortCandidatesArr = (sortBy) => {
     const getBalanceFromString = (string) => {
-        const regexp = /\d+\,\d+\.\d+/gi;
-        const balance = +string.match(regexp)[0].replace(',', '');
-
-        return balance;
+        const regexp = /\d+,\d+.\d+/gi;
+        return +string.match(regexp)[0].replace(',', '');
     };
 
     if (sortBy === 'asc') {
@@ -79,3 +76,27 @@ const sortCandidatesArr = (sortBy) => {
 console.log(sortCandidatesArr('asc'));
 console.log(sortCandidatesArr('desc'));
 console.log(sortCandidatesArr());
+// Task 4
+const getEyeColorMap = () => {
+    const result = {};
+    const eyeColor = [...new Set(candidateArr.map(item => item.eyeColor))];
+
+    eyeColor.forEach(color => {
+        Object.defineProperty(result, color, {
+            value: [],
+            enumerable: true,
+        });
+    });
+
+    for (let key in result) {
+        candidateArr.forEach(candidate => {
+            if (key === candidate.eyeColor) {
+                result[key].push(candidate);
+            }
+        });
+    }
+
+    return result;
+};
+
+console.log(getEyeColorMap());
