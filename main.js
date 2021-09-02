@@ -91,3 +91,51 @@ const swapFooterWithMain = () => {
 
 setBackgroundColorForLastParagraph();
 swapFooterWithMain();
+// Task 4
+const box = document.createElement('div');
+const title = document.createElement('h1');
+const ul = document.createElement('ul');
+
+box.classList.add('box');
+ul.setAttribute('id', 'menu');
+
+title.textContent = 'Menu';
+
+document.body.append(box);
+box.prepend(title, ul);
+
+const ingredients = {
+    "cocoa": ["cocoa powder", "milk", "sugar"],
+    "cappuccino": ["milk", "coffee"],
+    "smoothie": ["banana", "orange", "sugar"],
+    "matcha frappe": ["matcha", "milk", "ice"]
+};
+
+const menuItems = Object.keys(ingredients);
+
+menuItems.forEach(item => {
+    ul.innerHTML += `
+        <li>${item}</li>
+    `;
+});
+
+ul.addEventListener('click', function(e) {
+    const ol = document.createElement('ol');
+    
+    if (!e.target.classList.contains('active')) {
+        for (let key in ingredients) {
+            if (key === e.target.textContent) {
+                e.target.classList.add('active');
+                e.target.append(ol);
+                ingredients[key].forEach(item => {
+                    ol.innerHTML += `
+                    <li>${item}</li>
+                    `;
+                });
+            }
+        }
+    } else {
+        e.target.removeAttribute('class');
+        e.target.removeChild(e.target.children[0]);
+    }
+});
