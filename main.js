@@ -54,3 +54,40 @@ btnStart.addEventListener('click', () => {
 })
 
 getTime();
+// Task 3
+const wrapper = document.createElement('div');
+const main = document.createElement('div');
+const footer = document.createElement('div');
+const h1 = document.createElement('h1');
+const pFirst = document.createElement('p');
+const pSecond = document.createElement('p');
+const pLast = document.createElement('p');
+
+wrapper.setAttribute('id', 'wrapper');
+main.setAttribute('id', 'main');
+footer.setAttribute('id', 'footer');
+
+h1.textContent = 'Footer';
+pFirst.textContent = 'I am first paragraph';
+pSecond.textContent = 'I am second paragraph';
+pLast.textContent = 'I am last paragraph';
+
+footer.prepend(h1);
+main.prepend(pFirst, pSecond, pLast);
+
+document.body.append(wrapper);
+wrapper.prepend(footer, main);
+
+
+const setBackgroundColorForLastParagraph = () => {
+    const lastParagraph = main.lastChild;
+    lastParagraph.setAttribute('style', 'background-color: khaki');
+}
+
+const swapFooterWithMain = () => {
+    footer.remove();
+    wrapper.append(footer);
+}
+
+setBackgroundColorForLastParagraph();
+swapFooterWithMain();
