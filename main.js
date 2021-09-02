@@ -13,8 +13,8 @@ const removeUser = (arr, index) => {
 
 console.log(removeUser(arrNames, 1));
 // Task 2
-const obj = { 
-    name: 'Vasya', 
+const obj = {
+    name: 'Vasya',
     age: 1,
 };
 
@@ -51,7 +51,7 @@ const insertIntoarr = (obj, candidateId) => {
     const candidatesId = arrСandidates.map(item => item.id);
 
     if (candidatesId.includes(candidateId)) {
-        for (let  i = 0; i < arrСandidates.length; i++) {
+        for (let i = 0; i < arrСandidates.length; i++) {
             if (arrСandidates[i].id === candidateId) {
                 arrСandidates.splice(i, 0, obj);
                 break;
@@ -107,7 +107,7 @@ const getUsersByYear = (year) => {
         console.error(`Candidate ${year} registration not found in array!`);
     }
 
-    return result ;
+    return result;
 };
 
 console.log(getUsersByYear(2016));
@@ -139,3 +139,46 @@ const getCandidatesByGender = (gender) => {
 };
 
 console.log(getCandidatesByGender('male'));
+// Task 10
+// Custom reduce
+Object.defineProperty(Array.prototype, 'customReduce', {
+    value: function (callback) {
+        let outputValue = 0;
+
+        for (let i = 0; i < this.length; i++) {
+            callback(outputValue = outputValue + this[i]);
+        }
+
+        return outputValue;
+    },
+    enumerable: false
+})
+
+const numbers = [1, 32, 21, 12, 54, 12];
+
+console.log(numbers.customReduce((a, b) => a + b));
+
+// Custom join
+Object.defineProperty(Array.prototype, 'customJoin', {
+    value: function (separator = ',') {
+        if (typeof separator !== 'string') {
+            throw new Error('Use separator as string');
+        }
+
+        let str = '';
+
+        for (let index in this) {
+            str +=
+                typeof this[index] === 'string' || typeof this[index] === 'number'
+                    ? this[index]
+                    : '';
+            str += index >= this.length - 1 ? '' : separator;
+        }
+        return str;
+    },
+    enumerable: false,
+});
+
+const elements = ['Fire', 'Air', 'Water'];
+
+console.log(elements.customJoin(', '));
