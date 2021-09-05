@@ -82,60 +82,27 @@ const candidate = new Candidate(candidatesArr[1]);
 console.log(candidate.state());
 // Task 6
 const getCompanyNames = () => {
-    const result = [];
+    const company = candidatesArr.map(item => item.company);
 
-    for (let i = 0; i < candidatesArr.length; i++) {
-        result.push(candidatesArr[i].company);
-    }
-
-    return [...new Set(result)];
+    return company.filter((item, index) => company.indexOf(item) === index);
 };
 
 console.log(getCompanyNames());
 // Task 7
 const getUsersByYear = (year) => {
-    const result = [];
-    const yearRegistration = [...new Set(candidatesArr.map(item => +item.registered.split('-')[0]))];
-
-    if (yearRegistration.includes(year)) {
-        for (let i = 0; i < candidatesArr.length; i++) {
-            if (+candidatesArr[i].registered.split('-')[0] === year) {
-                result.push(candidatesArr[i]._id);
-            }
-        }
-    } else {
-        console.error(`Candidate ${year} registration not found in array!`);
-    }
-
-    return result;
+    return candidatesArr.filter((item) => +item.registered.split('-')[0] === year);
 };
 
-console.log(getUsersByYear(2016));
+console.log(getUsersByYear(2017));
 // Task 8
 const getCandidatesByUnreadMsg = (amount) => {
-    const result = [];
-
-    for (let i = 0; i < candidatesArr.length; i++) {
-        if (+candidatesArr[i].greeting.match(/\d+/) === amount) {
-            result.push(candidatesArr[i]);
-        }
-    }
-
-    return result;
+    return candidatesArr.filter((item) => +item.greeting.match(/\d+/) === amount);
 };
 
-console.log(getCandidatesByUnreadMsg(10));
+console.log(getCandidatesByUnreadMsg(4));
 // Task 9
 const getCandidatesByGender = (gender) => {
-    const result = [];
-
-    for (let i = 0; i < candidatesArr.length; i++) {
-        if (candidatesArr[i].gender === gender) {
-            result.push(candidatesArr[i]);
-        }
-    }
-
-    return result;
+    return candidatesArr.filter((item) => item.gender === gender);
 };
 
 console.log(getCandidatesByGender('male'));
