@@ -55,3 +55,89 @@ class ValidationError extends Error {
     this.name = 'Product Error';
   }
 }
+// Task 3
+const id = [3, 5, 7, 12, 32, 56, 76, 81, 90, 103];
+const container = document.querySelector('.container');
+const inputs = document.querySelectorAll('.checkbox-container input');
+
+inputs.forEach(item => {
+  item.addEventListener('click', (e) => {
+    const currentInput = e.target;
+
+    inputs.forEach(item => {
+      item.checked = false;
+    })
+
+    currentInput.checked = true;
+
+    if (currentInput.checked) {
+      filterСharacters(currentInput.id);
+    }
+  });
+});
+
+function addCards(characters) {
+  container.innerHTML = '';
+
+  const getStatus = (condition) => condition === 'Dead' ? 'live-status dead' : 'live-status';
+
+  characters.forEach(character => {
+    container.innerHTML += `
+        <div class="card">
+            <div class="card-info">
+                <div class="title">
+                    <h1>${character.name}</h1>
+                    <div class="status">
+                        <div class="${getStatus(character.status)}"></div>
+                        <p>${character.species} -- ${character.status}</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <p>${character.location.name}</p>
+                </div>
+            </div>
+            <div class="card-image">
+                <img src="${character.image}" alt="Image">
+            </div>
+        </div>
+    `;
+  });
+};
+
+async function filterСharacters(type) {
+  let url = 'https://rickandmortyapi.com/api/character/';
+
+  switch(type) {
+    case 'male':
+      url += '?gender=male'
+      break;
+    case 'female':
+      url += '?gender=female'
+      break;
+    case 'alive':
+      url += '?status=alive'
+      break;
+    case 'dead':
+      url += '?status=dead'
+      break;
+  }
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  addCards(data.results);
+}
+
+async function getСharactersById(...id) {
+  const url = 'https://rickandmortyapi.com/api/character/';
+  const response = await fetch(`${url}${id}`);
+  const data = await response.json();
+
+  if (!arguments.length) {
+    addCards(data.results);
+  } else {
+    addCards([data].flat());
+  }
+}
+
+getСharactersById(id);
