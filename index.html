@@ -1,14 +1,253 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!doctype html>
+<html class="page" lang="en">
+<head class="page__head">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework</title>
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MacOutlet</title>
+    <link rel="stylesheet" href="./styles/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./fonts/Roboto/font.css">
+    <link rel="stylesheet" href="./styles/index.css">
+
+    <script src="./scripts/swiper-bundle.min.js" defer></script>
+    <script src="./scripts/items.js" defer></script>
+    <script src="./scripts/index.js" defer></script>
 </head>
-<body>
-    
-    <script src="candidates.js" defer></script>
-    <script src="main.js" defer></script>
+<body class="page__body lock">
+    <div class="preloader">
+        <img class="preloader__image" src="./images/icons/preloader.svg" alt="preloader">
+    </div>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__body">
+                    <div class="logo">
+                        <a class="logo__link" href="#">
+                            <img class="logo__image" src="./images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <button class="basket">
+                        <img class="basket__image" src="./images/icons/basket.svg" alt="">
+                        <span class="basket__number">0</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="banner">
+                <div class="container">
+                    <div class="banner__body">
+                        <div class="swiper-container banner-container">
+                            <div class="swiper-wrapper banner-wrapper">
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/air_pods_max_banner.jpg');">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/airpods_pro_banner.png');"></div>
+                                </div>
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/apple_tv_banner.png');"></div>
+                                </div>
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/ipad_air_banner.jpg');"></div>
+                                </div>
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/iphone_12_banner.jpg');"></div>
+                                </div>
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/mac_book_banner.jpg');"></div>
+                                </div>
+                                <div class="swiper-slide banner-slide">
+                                    <div class="banner-content" style="background-image: url('./images/banners/watch_banner.jpg');"></div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination banner-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="content__body">
+                        <div class="content__search search">
+                            <form class="search__form">
+                                <button class="search__form-button" type="submit"></button>
+                                <input class="search__form-input" type="search" placeholder="Enter device name...">
+                            </form>
+                            <div class="search__filters">
+                                <button class="search__filters-item search__filters-item--lines"></button>
+                                <button class="search__filters-item search__filters-item--settings"></button>
+                            </div>
+                        </div>
+                        <div class="content__filters filters">
+                            <div class="filters__item">
+                                <div class="filters__item-top">
+                                    <p class="filters__item-title">Price</p>
+                                </div>
+                                <div class="filters__item-bottom">
+                                    <div class="filters__item-wrapper">
+                                        <p class="filters__item-text">From</p>
+                                        <input class="filters__item-input min" type="number" placeholder="350">
+                                    </div>
+                                    <div class="filters__item-wrapper">
+                                        <p class="filters__item-text">To</p>
+                                        <input class="filters__item-input max" type="number" placeholder="1350">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters__item">
+                                <div class="filters__item-top">
+                                    <p class="filters__item-title">Color</p>
+                                </div>
+                                <div class="filters__item-bottom">
+                                    <div class="filters__item-box color">
+                                        <!-- <label class="filters__item-label">
+                                            <input type="checkbox" value="Red">
+                                            <span>Red</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="Black">
+                                            <span>Black</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="Blue">
+                                            <span>Blue</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="Gold">
+                                            <span>Gold</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters__item">
+                                <div class="filters__item-top">
+                                    <p class="filters__item-title">Memory</p>
+                                </div>
+                                <div class="filters__item-bottom">
+                                    <div class="filters__item-box memory">
+                                        <!-- <label class="filters__item-label">
+                                            <input type="checkbox" value="32 Gb">
+                                            <span>32 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="64 Gb">
+                                            <span>64 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="128 Gb">
+                                            <span>128 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="256 GB">
+                                            <span>256 GB</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters__item">
+                                <div class="filters__item-top">
+                                    <p class="filters__item-title">OS</p>
+                                </div>
+                                <div class="filters__item-bottom">
+                                    <div class="filters__item-box os">
+                                        <!-- <label class="filters__item-label">
+                                            <input type="checkbox" value="32 Gb">
+                                            <span>32 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="64 Gb">
+                                            <span>64 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="128 Gb">
+                                            <span>128 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="256 GB">
+                                            <span>256 GB</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="filters__item">
+                                <div class="filters__item-top">
+                                    <p class="filters__item-title">Display</p>
+                                </div>
+                                <div class="filters__item-bottom">
+                                    <div class="filters__item-box display">
+                                        <!-- <label class="filters__item-label">
+                                            <input type="checkbox" value="32 Gb">
+                                            <span>32 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="64 Gb">
+                                            <span>64 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="128 Gb">
+                                            <span>128 Gb</span>
+                                        </label>
+                                        <label class="filters__item-label">
+                                            <input type="checkbox" value="256 GB">
+                                            <span>256 GB</span>
+                                        </label> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content__products products">
+                            <!--<div class="products__item">
+                                <div class="products__item-top">
+                                    <img class="products__item-image" src="./images/items/airpods-max.jpg" alt="">
+                                    <h3 class="products__item-title">Airpods Max</h3>
+                                    <p class="products__item-stock products__item-stock&#45;&#45;close"><span>0&nbsp;</span>left in stock</p>
+                                    <p class="products__item-price">Price: <span>299</span> $</p>
+                                    <button class="products__item-add" disabled>Add to cart</button>
+                                    <button class="products__item-like"></button>
+                                </div>
+                                <div class="products__item-bottom">
+                                    <div class="products__item-reviews">
+                                        <div class="products__item-wrapper">
+                                            <p class="products__item-text"><span>65%</span> Positive reviews</p>
+                                            <p class="products__item-text">Above avarage</p>
+                                        </div>
+                                    </div>
+                                    <div class="products__item-orders">
+                                        <p class="products__item-text"><span>296</span></p>
+                                        <p class="products__item-text">orders</p>
+                                    </div>
+                                </div>
+                            </div>-->
+                            <!--<div class="products__item">
+                                <div class="products__item-top">
+                                    <img class="products__item-image" src="./images/items/apple-watch-series-6.png" alt="">
+                                    <h3 class="products__item-title">Apple Watch 6</h3>
+                                    <p class="products__item-stock products__item-stock&#45;&#45;check"><span>483&nbsp;</span>left in stock</p>
+                                    <p class="products__item-price">Price: <span>699</span> $</p>
+                                    <button class="products__item-add">Add to cart</button>
+                                    <button class="products__item-like"></button>
+                                </div>
+                                <div class="products__item-bottom">
+                                    <div class="products__item-reviews">
+                                        <div class="products__item-wrapper">
+                                            <p class="products__item-text"><span>27%</span> Positive reviews</p>
+                                            <p class="products__item-text">Above avarage</p>
+                                        </div>
+                                    </div>
+                                    <div class="products__item-orders">
+                                        <p class="products__item-text"><span>102</span></p>
+                                        <p class="products__item-text">orders</p>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
